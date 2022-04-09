@@ -1,0 +1,5 @@
+### Get spending per service
+GET http://localhost:8080/spending/service
+
+### Get spending per service for a particular view
+GET http://localhost:8080/spending/service/view/1

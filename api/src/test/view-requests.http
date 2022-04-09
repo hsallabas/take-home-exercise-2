@@ -1,0 +1,28 @@
+### Get all view
+GET http://localhost:8080/views
+
+
+### Create view
+POST http://localhost:8080/views
+Content-Type: application/json
+
+{
+  "name": "First View",
+  "services": ["ECONOMY AND ENVIRONMENT", "PUBLIC HEALTH"]
+}
+
+### Read view
+GET http://localhost:8080/views/1
+
+
+### Update view
+PUT http://localhost:8080/views/1
+Content-Type: application/json
+
+{
+  "name": "Updated view",
+  "services": ["ECONOMY AND ENVIRONMENT", "PUBLIC HEALTH", "CUSTOMERS & CORPORATE SERVICE"]
+}
+
+### Delete view
+DELETE http://localhost:8080/views/1

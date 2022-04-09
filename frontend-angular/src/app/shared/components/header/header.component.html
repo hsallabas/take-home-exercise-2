@@ -1,3 +1,7 @@
-<mat-toolbar color="primary">
-    <ng-content></ng-content>
+<mat-toolbar color="primary" class="toolbar-wrapper">
+  <ng-content></ng-content>
+  <div>
+    <a mat-button [routerLink]="'/'">Dashboard</a>
+    <a mat-button [routerLink]="'/my-views'">My Views</a>
+  </div>
 </mat-toolbar>

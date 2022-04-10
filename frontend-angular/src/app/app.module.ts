@@ -6,6 +6,10 @@ import { AppComponent } from "./app.component";
 import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatToolbarModule } from "@angular/material";
 import { HttpClientModule } from "@angular/common/http";
+import { EffectsModule } from "@ngrx/effects";
+import { ServiceSpendEffects } from "./app-state/effects";
+import { StoreModule } from "@ngrx/store";
+import { reducers } from './app-state';
 
 @NgModule({
   declarations: [AppComponent],
@@ -14,7 +18,9 @@ import { HttpClientModule } from "@angular/common/http";
     AppRoutingModule,
     BrowserAnimationsModule,
     MatToolbarModule,
-    HttpClientModule
+    HttpClientModule,
+    StoreModule.forRoot(reducers),
+    EffectsModule.forRoot([ServiceSpendEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

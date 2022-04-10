@@ -1,7 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { ServiceSpendingService } from "../service-spending.service";
 import { Observable } from "rxjs";
-import { ServiceSpend } from "../service-spend";
+import { ServiceSpend } from "../app-state/models";
+import { select, Store } from "@ngrx/store";
+import * as fromRootState from '../app-state';
+import * as ServiceSpendActions from '../app-state/actions/service-spend.actions';
 
 @Component({
   selector: "app-dashboard",
@@ -9,11 +11,11 @@ import { ServiceSpend } from "../service-spend";
   styleUrls: ["./dashboard.component.scss"]
 })
 export class DashboardComponent implements OnInit {
-  public spendingByService: Observable<Array<ServiceSpend>>;
+  public spendingByService$: Observable<Array<ServiceSpend>> = this.store.pipe(select(fromRootState.getServices));
 
-  constructor(private readonly spendingDataService: ServiceSpendingService) {}
+  constructor(private readonly store: Store) { }
 
   ngOnInit() {
-    this.spendingByService = this.spendingDataService.getSpendingByService();
+    this.store.dispatch({ type: ServiceSpendActions.GET_SERVICE });
   }
 }

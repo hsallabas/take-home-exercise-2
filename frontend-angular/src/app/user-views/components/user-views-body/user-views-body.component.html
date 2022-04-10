@@ -1,0 +1,6 @@
+<div fxLayout="row wrap" class="create-button-wrapper">
+  <button mat-raised-button color="primary">Create View</button>
+</div>
+<div fxLayout="row wrap" fxLayoutGap="10px grid">
+  <app-user-views-card *ngFor="let userView of userViews" [userView]="userView" fxFlex="33"></app-user-views-card>
+</div>

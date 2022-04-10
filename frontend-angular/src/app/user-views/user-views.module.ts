@@ -3,15 +3,22 @@ import { CommonModule } from '@angular/common';
 import { UserViewsComponent } from './user-views.component';
 import { SharedModule } from '../shared/shared.module';
 import { UserViewsRoutingModule } from './user-views-routing.module';
-
-
-
+import { UserViewsHeaderComponent } from './components/user-views-header/user-views-header.component';
+import { UserViewsBodyComponent } from './components/user-views-body/user-views-body.component';
+import { UserViewsCardComponent } from './components/user-views-card/user-views-card.component';
+import { FlexModule } from '@angular/flex-layout';
+import { MatButtonModule, MatCardModule, MatDividerModule, MatIconModule } from '@angular/material';
 @NgModule({
-  declarations: [UserViewsComponent],
+  declarations: [UserViewsComponent, UserViewsHeaderComponent, UserViewsBodyComponent, UserViewsCardComponent],
   imports: [
     CommonModule,
     SharedModule,
-    UserViewsRoutingModule
+    UserViewsRoutingModule,
+    FlexModule,
+    MatButtonModule,
+    MatCardModule,
+    MatDividerModule,
+    MatIconModule
   ]
 })
 export class UserViewsModule { }

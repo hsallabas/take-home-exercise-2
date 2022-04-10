@@ -1,0 +1,13 @@
+@import '~@angular/material/theming';
+
+:host {
+  background-color: #f5f5f5;
+  border-top: 1px solid mat-color(mat-palette($mat-grey));
+  padding: 10px;
+  display: block;
+}
+
+.create-button-wrapper {
+    justify-content: end;
+    margin: 8px 12px 20px 0px;
+}

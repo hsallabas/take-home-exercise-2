@@ -1,5 +1,5 @@
 import { Component, Input } from "@angular/core";
-import { ServiceSpend } from "../../app-state/models";
+import { ServiceSpend } from "../../../app-state/models";
 
 @Component({
   selector: "app-dashboard-body",

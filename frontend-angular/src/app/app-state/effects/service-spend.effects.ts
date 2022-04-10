@@ -1,7 +1,7 @@
 import { Injectable } from "@angular/core";
 import { Actions, createEffect, ofType } from "@ngrx/effects";
-import { ServiceSpendingService } from "src/app/service-spending.service";
-import * as ServiceSpendActions from '../actions/service-spend.actions'
+import { ServiceSpendingService } from "src/app/dashboard/services/service-spending.service";
+import * as ServiceSpendActions from '../actions'
 import { EMPTY } from 'rxjs';
 import { map, catchError, switchMap } from 'rxjs/operators';
 

@@ -1,6 +1,6 @@
 import { Action, createReducer, on } from "@ngrx/store";
-import { ServiceSpend } from "../models/service-spend";
-import * as ServiceSpendActions from '../actions';
+import { ServiceSpend } from "../models";
+import * as ServiceSpendActions from '../actions/service-spend.actions';
 
 export interface State {
   services: ServiceSpend[],

@@ -6,12 +6,12 @@
       <button mat-icon-button> <mat-icon>delete</mat-icon> </button>
     </div>
   </mat-card-subtitle>
-  <mat-card-title>Test View - 1</mat-card-title>
+  <mat-card-title>{{userView.name}}</mat-card-title>
+  <mat-divider inset></mat-divider>
   <mat-card-content>
-    <p><span>PHYSICAL DIS & OLDER PEOPLE:</span> <b>2273454.32</b></p>
-    <p><span>PHYSICAL DIS & OLDER PEOPLE:</span> <b>2273454.32</b></p>
-    <p><span>PHYSICAL DIS & OLDER PEOPLE:</span> <b>2273454.32</b></p>
-    <p><span>PHYSICAL DIS & OLDER PEOPLE:</span> <b>2273454.32</b></p>
+    <p *ngFor="let service of userView.services">
+      <span>{{getSpendingService(service)?.service}}</span> <b>{{getSpendingService(service)?.spending | currency : 'GBP'}}</b>
+    </p>
   </mat-card-content>
   <mat-divider inset></mat-divider>
   <mat-card-actions>

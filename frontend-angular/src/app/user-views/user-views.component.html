@@ -1,10 +1,9 @@
 <app-user-views-header></app-user-views-header>
-<!-- <ng-container *ngIf="userViews$ | async as userViews">
+<ng-container *ngIf="userViews$ | async as userViews">
   <ng-container *ngIf="userViews.length; else loading">
     <app-user-views-body [userViews]="userViews"></app-user-views-body>
   </ng-container>
-</ng-container> -->
-<app-user-views-body [userViews]="userViews"></app-user-views-body>
+</ng-container>
 <ng-template #loading>
   Loading...
 </ng-template>

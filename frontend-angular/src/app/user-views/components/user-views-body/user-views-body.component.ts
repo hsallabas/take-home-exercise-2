@@ -1,5 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { UserView } from 'src/app/app-state/models';
+import { select, Store } from '@ngrx/store';
+import { Observable } from 'rxjs';
+import { ServiceSpend, UserView } from 'src/app/app-state/models';
+import * as fromRootState from '../../../app-state';
 
 @Component({
   selector: 'app-user-views-body',
@@ -8,60 +11,10 @@ import { UserView } from 'src/app/app-state/models';
 })
 export class UserViewsBodyComponent implements OnInit {
   @Input() public userViews: Array<UserView>;
+  public spendingByService$: Observable<Array<ServiceSpend>> = this.store.pipe(select(fromRootState.getServices));
 
-  constructor() { }
+  constructor(private readonly store: Store) { }
 
-  ngOnInit() {
-    this.userViews = [
-      {
-        "id": 1,
-        "name": "Test View-1",
-        "services": [
-          "FINANCE CONTROL",
-          "PUBLIC HEALTH"
-        ]
-      },
-      {
-        "id": 2,
-        "name": "Test View-2",
-        "services": [
-          "FINANCE CONTROL",
-          "PUBLIC HEALTH"
-        ]
-      },
-      {
-        "id": 3,
-        "name": "Test View-3",
-        "services": [
-          "FINANCE CONTROL",
-          "PUBLIC HEALTH"
-        ]
-      },
-      {
-        "id": 4,
-        "name": "Test View-4",
-        "services": [
-          "FINANCE CONTROL",
-          "PUBLIC HEALTH"
-        ]
-      },
-      {
-        "id": 5,
-        "name": "Test View-5",
-        "services": [
-          "FINANCE CONTROL",
-          "PUBLIC HEALTH"
-        ]
-      },
-      {
-        "id": 6,
-        "name": "Test View-6",
-        "services": [
-          "FINANCE CONTROL",
-          "PUBLIC HEALTH"
-        ]
-      }
-    ]
-  }
+  ngOnInit() {}
 
 }

@@ -7,9 +7,10 @@ import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 import { MatToolbarModule } from "@angular/material";
 import { HttpClientModule } from "@angular/common/http";
 import { EffectsModule } from "@ngrx/effects";
-import { ServiceSpendEffects } from "./app-state/effects";
+import { ServiceSpendEffects } from "./app-state/effects/service-spend.effects";
 import { StoreModule } from "@ngrx/store";
 import { reducers } from './app-state';
+import { UserViewEffects } from "./app-state/effects/user-view.effects";
 
 @NgModule({
   declarations: [AppComponent],
@@ -20,7 +21,7 @@ import { reducers } from './app-state';
     MatToolbarModule,
     HttpClientModule,
     StoreModule.forRoot(reducers),
-    EffectsModule.forRoot([ServiceSpendEffects])
+    EffectsModule.forRoot([ServiceSpendEffects, UserViewEffects])
   ],
   providers: [],
   bootstrap: [AppComponent]

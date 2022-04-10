@@ -1,5 +1,5 @@
 export interface UserView {
-    id: number;
-    name: string;
-    services: string[];
-  }
+  id: number;
+  name: string;
+  services: string[];
+}

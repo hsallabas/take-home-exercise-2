@@ -1,5 +1,5 @@
 <div fxLayout="row wrap" class="create-button-wrapper">
-    <button mat-raised-button color="primary">Create View</button>
+    <button mat-raised-button color="primary" (click)="createView()">Create View</button>
 </div>
 <ng-container *ngIf="spendingByService$ | async as services">
   <div fxLayout="row wrap" fxLayoutGap="10px grid">

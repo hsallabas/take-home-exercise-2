@@ -3,6 +3,7 @@ import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { ServiceSpend, UserView } from 'src/app/app-state/models';
 import * as fromRootState from '../../../app-state';
+import * as UserViewsActions from '../../../app-state/actions/user-views.actions';
 
 @Component({
   selector: 'app-user-views-body',
@@ -16,5 +17,9 @@ export class UserViewsBodyComponent implements OnInit {
   constructor(private readonly store: Store) { }
 
   ngOnInit() {}
+
+  createView() {
+    this.store.dispatch({ type: UserViewsActions.CREATE_VIEW, payload: {id: null, name: '', services: []} });
+  }
 
 }

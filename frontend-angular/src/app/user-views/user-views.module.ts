@@ -7,18 +7,23 @@ import { UserViewsHeaderComponent } from './components/user-views-header/user-vi
 import { UserViewsBodyComponent } from './components/user-views-body/user-views-body.component';
 import { UserViewsCardComponent } from './components/user-views-card/user-views-card.component';
 import { FlexModule } from '@angular/flex-layout';
-import { MatButtonModule, MatCardModule, MatDividerModule, MatIconModule } from '@angular/material';
+import { MatButtonModule, MatCardModule, MatDividerModule, MatIconModule, MatInputModule, MatSelectModule } from '@angular/material';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 @NgModule({
   declarations: [UserViewsComponent, UserViewsHeaderComponent, UserViewsBodyComponent, UserViewsCardComponent],
   imports: [
     CommonModule,
     SharedModule,
+    FormsModule,
+    ReactiveFormsModule,
     UserViewsRoutingModule,
     FlexModule,
     MatButtonModule,
     MatCardModule,
     MatDividerModule,
-    MatIconModule
+    MatIconModule,
+    MatInputModule,
+    MatSelectModule
   ]
 })
 export class UserViewsModule { }

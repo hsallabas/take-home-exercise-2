@@ -1,24 +1,58 @@
-<mat-card class="user-view-card">
-  <mat-card-subtitle class="card-header">
-    <span>Created Date: 10.04.2022</span>
-    <div>
-      <button mat-icon-button> <mat-icon>edit</mat-icon> </button>
-      <button mat-icon-button> <mat-icon>delete</mat-icon> </button>
-    </div>
-  </mat-card-subtitle>
-  <mat-card-title>{{userView.name}}</mat-card-title>
-  <mat-divider inset></mat-divider>
-  <mat-card-content>
-    <p *ngFor="let service of userView.services">
-      <span>{{getSpendingService(service)?.service}}</span> <b>{{getSpendingService(service)?.spending | currency : 'GBP'}}</b>
-    </p>
-  </mat-card-content>
-  <mat-divider inset></mat-divider>
-  <mat-card-actions>
-    <button mat-button>Save</button>
-    <button mat-button>Cancel</button>
-  </mat-card-actions>
-  <!-- <mat-card-footer>
-      <mat-progress-bar mode="indeterminate"></mat-progress-bar>
-    </mat-card-footer> -->
-</mat-card>
+<ng-container *ngIf="userView.id && !edit; else viewFormTemplate">
+  <mat-card class="user-view-card">
+    <mat-card-subtitle class="card-header">
+      <span>Created Date: 10.04.2022</span>
+      <div>
+        <button mat-icon-button (click)="editView()"><mat-icon>edit</mat-icon></button>
+        <button mat-icon-button (click)="deleteView()"><mat-icon>delete</mat-icon></button>
+      </div>
+    </mat-card-subtitle>
+    <mat-card-title class="view-title">{{ userView.name }}</mat-card-title>
+    <mat-divider inset class="header-divider"></mat-divider>
+    <mat-card-content>
+      <p *ngFor="let service of userView.services">
+        <span>{{ getSpendingService(service)?.service }}</span>
+        <b>{{ getSpendingService(service)?.spending | currency: "GBP" }}</b>
+      </p>
+    </mat-card-content>
+  </mat-card>
+</ng-container>
+
+<ng-template #viewFormTemplate>
+  <form [formGroup]="viewForm">
+    <mat-card class="user-view-card">
+      <mat-form-field>
+        <mat-label>View Name</mat-label>
+        <input matInput placeholder="My View" formControlName="name" />
+      </mat-form-field>
+      <mat-card-content>
+        <mat-form-field>
+          <mat-label>Select Service</mat-label>
+          <mat-select (selectionChange)="selectService($event)">
+            <mat-option *ngFor="let serviceItem of availableService" [value]="serviceItem.service">
+              {{ serviceItem.service }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+        <div class="service-info" *ngFor="let service of viewForm.value.services; let i = index">
+          <div class="service-info-left">
+            <span>{{ getSpendingService(service)?.service }}</span>
+          </div>
+          <div class="service-info-right">
+            <b>{{ getSpendingService(service)?.spending | currency: "GBP" }}</b>
+            <button mat-icon-button (click)="upService(i)" [disabled]="i === 0"><mat-icon>arrow_upward</mat-icon></button>
+            <button mat-icon-button (click)="downService(i)" [disabled]="i === viewForm.value.services.length -1"><mat-icon>arrow_downward</mat-icon></button>
+            <button mat-icon-button (click)="deleteService(i)"><mat-icon>delete</mat-icon></button>
+          </div>
+        </div>
+      </mat-card-content>
+      <mat-card-actions>
+        <button mat-button (click)="saveView()">Save</button>
+        <button mat-button (click)="cancel()">Cancel</button>
+      </mat-card-actions>
+      <!-- <mat-card-footer>
+          <mat-progress-bar mode="indeterminate"></mat-progress-bar>
+        </mat-card-footer> -->
+    </mat-card>
+  </form>
+</ng-template>

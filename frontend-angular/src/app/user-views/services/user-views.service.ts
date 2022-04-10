@@ -15,4 +15,16 @@ export class UserViewsService {
   public getUserViews(): Observable<Array<UserView>> {
     return this.userViewsApiService.get();
   }
+
+  public createView(data: UserView): Observable<Array<UserView>> {
+    return this.userViewsApiService.createView(data);
+  }
+
+  public updateView(data: UserView): Observable<Array<UserView>> {
+    return this.userViewsApiService.updateView(data);
+  }
+
+  public deleteView(viewId: number): Observable<Array<UserView>> {
+    return this.userViewsApiService.deleteView(viewId);
+  }
 }

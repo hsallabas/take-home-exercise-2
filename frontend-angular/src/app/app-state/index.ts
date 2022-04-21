@@ -12,7 +12,7 @@ export const getUserViewsState = createFeatureSelector<fromUserViews.State>('use
 
 export const getServices = createSelector(
     getServicesState,
-    (state: fromServiceSpend.State) => state.services
+    (state: fromServiceSpend.State) => state
 );
 
 export const getUserViews = createSelector(

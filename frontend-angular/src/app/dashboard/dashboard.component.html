@@ -1,7 +1,7 @@
 <app-dashboard-header></app-dashboard-header>
-<ng-container *ngIf="spendingByService$ | async as services">
-  <ng-container *ngIf="services.length else loading">
-    <app-dashboard-body [services]="services"></app-dashboard-body>
+<ng-container *ngIf="serviceState$ | async as serviceState">
+  <ng-container *ngIf="serviceState.loadServices else loading">
+    <app-dashboard-body [services]="serviceState.services"></app-dashboard-body>
   </ng-container>
 </ng-container>
 <ng-template #loading>

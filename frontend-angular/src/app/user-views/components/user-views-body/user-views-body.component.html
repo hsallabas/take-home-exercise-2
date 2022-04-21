@@ -2,9 +2,9 @@
     <button mat-raised-button color="primary" (click)="createView()">Create View</button>
 </div>
 <ng-container *ngIf="userViewState.loadViews; else loading">
-  <ng-container *ngIf="spendingByService$ | async as services">
+  <ng-container *ngIf="serviceState$ | async as serviceState">
     <div fxLayout="row wrap" fxLayoutGap="10px grid">
-      <app-user-views-card *ngFor="let userView of userViewState.userViews" [services]="services" [userView]="userView" fxFlex="33"></app-user-views-card>
+      <app-user-views-card *ngFor="let userView of userViewState.userViews" [services]="serviceState.services" [userView]="userView" fxFlex="33"></app-user-views-card>
     </div>
   </ng-container>
 </ng-container>

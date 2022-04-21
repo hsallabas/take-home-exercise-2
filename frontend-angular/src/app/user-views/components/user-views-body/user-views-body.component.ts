@@ -1,9 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { select, Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
+import { tap } from 'rxjs/operators';
 import { ServiceSpend, UserView } from 'src/app/app-state/models';
 import * as fromRootState from '../../../app-state';
 import * as UserViewsActions from '../../../app-state/actions/user-views.actions';
+import * as ServiceSpendActions from '../../../app-state/actions/service-spend.actions';
 
 @Component({
   selector: 'app-user-views-body',
@@ -12,7 +14,14 @@ import * as UserViewsActions from '../../../app-state/actions/user-views.actions
 })
 export class UserViewsBodyComponent implements OnInit {
   @Input() public userViewState: {userViews: UserView[]; loadViews: boolean};
-  public spendingByService$: Observable<Array<ServiceSpend>> = this.store.pipe(select(fromRootState.getServices));
+  public serviceState$: Observable<{services: ServiceSpend[]; loadServices: boolean}> = this.store.pipe(
+    select(fromRootState.getServices),
+    tap((serviceState) => {
+      if (!serviceState.loadServices) {
+        this.store.dispatch({ type: ServiceSpendActions.GET_SERVICE });
+      }
+    })
+  );
 
   constructor(private readonly store: Store) { }
 

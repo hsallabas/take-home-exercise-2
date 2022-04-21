@@ -27,7 +27,7 @@ export class UserViewsCardComponent implements OnInit {
     this.viewForm = this.formBuilder.group({
       id: [this.userView.id],
       name: [this.userView.name],
-      services: [this.userView.services]
+      services: [[...this.userView.services]]
     });
     this.getAvailableService()
   }

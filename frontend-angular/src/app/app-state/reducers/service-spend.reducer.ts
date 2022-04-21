@@ -3,7 +3,7 @@ import { ServiceSpend } from "../models";
 import * as ServiceSpendActions from '../actions/service-spend.actions';
 
 export interface State {
-  services: ServiceSpend[],
+  services: ServiceSpend[];
 }
 
 export const initialState: State = {

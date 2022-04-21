@@ -1,9 +1,14 @@
 <div fxLayout="row wrap" class="create-button-wrapper">
     <button mat-raised-button color="primary" (click)="createView()">Create View</button>
 </div>
-<ng-container *ngIf="spendingByService$ | async as services">
-  <div fxLayout="row wrap" fxLayoutGap="10px grid">
-    <app-user-views-card *ngFor="let userView of userViews" [services]="services" [userView]="userView" fxFlex="33"></app-user-views-card>
-  </div>
+<ng-container *ngIf="userViewState.loadViews; else loading">
+  <ng-container *ngIf="spendingByService$ | async as services">
+    <div fxLayout="row wrap" fxLayoutGap="10px grid">
+      <app-user-views-card *ngFor="let userView of userViewState.userViews" [services]="services" [userView]="userView" fxFlex="33"></app-user-views-card>
+    </div>
+  </ng-container>
 </ng-container>
+<ng-template #loading>
+  Loading...
+</ng-template>
 

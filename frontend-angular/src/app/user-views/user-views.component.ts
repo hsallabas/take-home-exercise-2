@@ -12,10 +12,10 @@ import * as UserViewsActions from '../app-state/actions/user-views.actions';
   styleUrls: ['./user-views.component.scss']
 })
 export class UserViewsComponent implements OnInit {
-  public userViews$: Observable<Array<UserView>> = this.store.pipe(
+  public userViewState$: Observable<{userViews: UserView[]; loadViews: boolean}> = this.store.pipe(
     select(fromRootState.getUserViews),
     tap((userViews) => {
-      if (!userViews.length) {
+      if (!userViews.loadViews) {
         this.store.dispatch({ type: UserViewsActions.GET_VIEW });
       }
     })
@@ -23,7 +23,6 @@ export class UserViewsComponent implements OnInit {
 
   constructor(private readonly store: Store) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

@@ -11,7 +11,7 @@ import * as UserViewsActions from '../../../app-state/actions/user-views.actions
   styleUrls: ['./user-views-body.component.scss']
 })
 export class UserViewsBodyComponent implements OnInit {
-  @Input() public userViews: Array<UserView>;
+  @Input() public userViewState: {userViews: UserView[]; loadViews: boolean};
   public spendingByService$: Observable<Array<ServiceSpend>> = this.store.pipe(select(fromRootState.getServices));
 
   constructor(private readonly store: Store) { }

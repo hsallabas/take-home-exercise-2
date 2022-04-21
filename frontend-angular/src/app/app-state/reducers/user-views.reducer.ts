@@ -3,17 +3,19 @@ import * as UserViewActions from '../actions/user-views.actions';
 import { UserView } from "../models";
 
 export interface State {
-  userViews: UserView[],
+  userViews: UserView[];
+  loadViews: boolean;
 }
 
 export const initialState: State = {
   userViews: [],
+  loadViews: false
 };
 
 const userViewsReducer = createReducer(
   initialState,
   on(UserViewActions.getViews, (state) => state),
-  on(UserViewActions.getViewsSuccess, (state, result) => ({...state, userViews: [...result.payload].sort((a,b) => b > a ? 1 : -1)})),
+  on(UserViewActions.getViewsSuccess, (state, result) => ({...state, userViews: [...result.payload].sort((a,b) => b > a ? 1 : -1), loadViews: true})),
   on(UserViewActions.createView, (state, data) => {
     if (data.payload.id) {
       return {...state, userViews: [data.payload, ...state.userViews.filter((x) => x.id !== null)]};
